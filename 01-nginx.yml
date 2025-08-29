@@ -2,12 +2,12 @@
   hosts: local
   become: yes
   tasks:
-    - name: installing nginx 
-      ansible.builtin.dnf:
+  - name: installing nginx 
+    ansible.builtin.dnf:
       name: nginx
       state: latest
-    - name: starting and enabling nginx
-      ansible.builtin.service:
+  - name: starting and enabling nginx
+    ansible.builtin.service:
       name: nginx
       state: started
       enabled: yes  
