@@ -1,6 +1,6 @@
 - name: vars from prompts
   hosts: local
-  vars_promt:
+  vars_prompt:
   - name : Name 
     prompt: Enter your name 
     private: false
