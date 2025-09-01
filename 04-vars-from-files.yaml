@@ -1,0 +1,8 @@
+- name: testing variables from files
+  hosts: local
+  vars_files:
+  - vars.yaml
+  tasks: 
+  -   name: testing
+      ansible.inbuilt.debug:
+       msg : "hii {{name}}, your age is {{age}}"
