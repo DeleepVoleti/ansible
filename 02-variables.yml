@@ -1,8 +1,8 @@
 - name: variables testing
   hosts: local
   vars :
-   name: Dilip
-   age: 25
+   name: rahul
+   age: 99
   tasks: 
   -   name: print the name and age 
       ansible.builtin.debug:
