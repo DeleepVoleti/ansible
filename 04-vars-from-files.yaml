@@ -4,5 +4,5 @@
   - vars.yaml
   tasks: 
   -   name: testing
-      ansible.inbuilt.debug:
+      ansible.builtin.debug:
        msg : "hii {{name}}, your age is {{age}}"
