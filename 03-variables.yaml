@@ -1,0 +1,16 @@
+- name: testing variables 
+  hosts: local
+  vars:
+    name: dilip
+    age: 25
+  tasks:
+  -   name: variable testing
+      vars: 
+        name: rahul
+        age: 99
+      ansible.builtin.debug:
+        msg : "my name is {{name}} , my age is {{age}}"
+          
+      name: without task level variables
+      ansible.builtin.debug:
+        msg : "my name is {{name}} , my age is {{age}}"  
