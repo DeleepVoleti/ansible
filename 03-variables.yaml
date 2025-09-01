@@ -9,8 +9,7 @@
         name: rahul
         age: 99
       ansible.builtin.debug:
-        msg : "my name is {{name}} , my age is {{age}}"
-          
-      name: without task level variables
+        msg : "my name is {{name}} , my age is {{age}}"  
+  -   name: without task level variables
       ansible.builtin.debug:
         msg : "my name is {{name}} , my age is {{age}}"  
