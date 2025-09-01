@@ -1,0 +1,17 @@
+- name: vars from prompts
+  hosts: local
+  vars_promt:
+  - name : Name 
+    prompt: Enter your name 
+    private: false
+  - name: Lname 
+    prompt: Enter your lover name 
+    private: true
+
+  tasks:
+  -   name: my first task
+      ansible.builtin.debug:
+        msg: "the name you entered is {{Name}}"  
+  -   name: 2nd task
+      ansible.builtin.debug:
+        msg: "your lover name is {{Lname}}"        
