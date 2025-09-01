@@ -1,0 +1,33 @@
+- name: installing and running nginx 
+  hosts: local
+  become: yes 
+  tasks:
+  -   name: installing nginx 
+      ansible.builtin.dnf:
+        name: nginx
+        state: latest 
+
+      name: running and enabling nginx 
+      ansible.builtin.service:
+        name: nginx
+        state: installed 
+        enabled: yes
+
+
+
+- name : installing and enabling nginx 
+  hosts: local
+  become: yes
+  tasks:
+  - name: installing nginx 
+    ansible.builtin.dnf:
+      name: nginx
+      state: latest
+    name: starting and enabling nginx
+    ansible.builtin.service:
+      name: nginx
+      state: started
+      enabled: yes
+
+
+   
