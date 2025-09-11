@@ -1,0 +1,34 @@
+- name: setting up db configuration
+  host: db 
+  become: yes
+  vars:
+  - login_host : db.dilipswebsite.online
+  vars_prompt:
+  -name: loginPassword
+   prompt: please enter my-sql login Password
+   private: false   
+  tasks:
+  - name: install my-sql server
+    ansible.builtin.dnf: 
+     name: mysql-d 
+     state: latest
+
+  - name: starting and enabling my-sql service   
+    ansible.builtin.service:
+     name: mqsql
+     state: started
+     enabled: yes  
+
+  - name: mysql user check 
+    community.mysql.mysql_info:
+     login_user: root
+     login_password: {{ loginPassword }}
+     login_host: {{ login_host }}
+     filter: version
+    ignore_errors: yes
+    register: reg
+
+  - name: set root password 
+    ansible.builtin.command: mysql_secure_installation --set-root-pass ExpenseApp@1
+    when: reg.failure is true
+       
