@@ -2,7 +2,7 @@
   hosts: local 
   become: yes
   vars:
-   login_host : db.dilipswebsite.online
+    login_host : db.dilipswebsite.online
 
   vars_prompt:
   - name: LP
@@ -23,9 +23,9 @@
   - name: installing python dependencies for mysql
     ansible.builtin.pip:
      name:
-     - PyMysql
-     - Cryptography
-    executable: pip 3.9.18    
+     - PyMySql
+     - cryptography
+    executable: pip 3.9   
 
   - name: mysql user check 
     community.mysql.mysql_info:
