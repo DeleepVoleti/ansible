@@ -2,7 +2,7 @@
   hosts: local 
   become: yes
   vars:
-    login_host : localhost
+    login_host : 174.129.117.9
 
   vars_prompt:
   - name: LP
@@ -40,7 +40,7 @@
     community.mysql.mysql_user:
        login_user: root
        login_password: "{{ LP }}"
-       login_host: localhost
+       login_host: "{{ login_host }}"
        user: root
        host_all: true
        password: "ExpenseApp@1"
