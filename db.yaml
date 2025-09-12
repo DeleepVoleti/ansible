@@ -2,7 +2,7 @@
   hosts: local 
   become: yes
   vars:
-    login_host : db.dilipswebsite.online
+    login_host : localhost
 
   vars_prompt:
   - name: LP
