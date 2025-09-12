@@ -25,7 +25,7 @@
      name:
      - PyMySql
      - cryptography
-    executable: pip 3.9   
+    executable: pip3.9   
 
   - name: mysql user check 
     community.mysql.mysql_info:
