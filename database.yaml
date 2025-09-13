@@ -36,5 +36,5 @@
     register: reg
 
   - name: set my-sql root user password
-    ansible.builtin.command: echo hii
+    ansible.builtin.command: mysql_secure_installation --set-root-pass ExpenseApp@1
     when: reg.failed is true    
