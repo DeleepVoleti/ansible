@@ -31,3 +31,10 @@
       login_user: root
       login_password: "{{ login_password }}"
       login_host: "{{ login_host }}"
+      filter: version
+    ignore_errors: yes
+    register: reg
+
+  - name: set my-sql root user password
+    ansible.builtin.command: echo hii
+    when: reg.failed is true    
