@@ -30,19 +30,12 @@
   - name: mysql user check 
     community.mysql.mysql_info:
       login_user: root
-      login_password: " {{ LP }} "
-      login_host: " {{ login_host }} "
+      login_password: "{{ LP }}"
+      login_host: "{{ login_host }}"
       filter: version
     ignore_errors: yes
     register: reg
 
   - name: set root password properly
-    community.mysql.mysql_user:
-       login_user: root
-       login_password: "{{ LP }}"
-       login_host: "{{ login_host }}"
-       user: root
-       host_all: true
-       password: "ExpenseApp@1"
-       state: present
-    when: reg is failed
+    ansible.builtin.command:  mysql_secure_installation --set-root-pass ExpenseApp@1
+    when: reg.failed is true

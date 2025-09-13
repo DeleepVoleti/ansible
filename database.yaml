@@ -1,0 +1,33 @@
+- name: setting up configuration for db server
+  hosts: db
+  become: yes
+  vars_prompt: 
+  - name: login_password
+    prompt: Please enter my sql-login password
+    private: no
+  vars:
+    login_host: db.dilipswebsite.online
+  tasks:
+  - name: install mysql server 
+    ansible.builtin.dnf:
+      name: mysql-server
+      state: latest
+
+  - name: start and enable my-sql service 
+    ansible.builtin.service:
+      name: mysqld
+      state: started 
+      enabled: yes
+
+  - name: install python-mysql dependencies for the ansible
+    ansible.builtin.pip:
+      name:
+      - cryptography
+      - pymysql
+      executable: pip3.9 
+
+  - name: check mysql password already set or not 
+    community.mysql.mysql_info:
+      login_user: root
+      login_password: "{{ login_password }}"
+      login_host: "{{ login_host }}"
