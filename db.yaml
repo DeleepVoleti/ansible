@@ -1,41 +1,37 @@
 - name: setting up db configuration
-  hosts: local 
+  hosts: db 
   become: yes
   vars:
-    login_host : 174.129.117.9
-
+    login_host: db.dilipswebsite.online
   vars_prompt:
-  - name: LP
-    prompt: please enter my-sql login Password
-    private: false   
-  tasks:
-  - name: install my-sql server
-    ansible.builtin.dnf: 
+    name: login_password
+    prompt: please enter my-sql login password for root user
+    private: no  
+  tasks: 
+  - name: installing mysql server 
+    ansible.builtin.dnf:
       name: mysql-server
       state: latest
-
-  - name: starting and enabling my-sql service   
+  - name: starting and enabling mysql service 
     ansible.builtin.service:
-      name: mysqld
-      state: started
-      enabled: yes  
-
-  - name: installing python dependencies for mysql
+      name: mysql    
+      state: started 
+      enabled: yes
+  - name: downloading python dependencies for ansible
     ansible.builtin.pip:
-     name:
-     - PyMySql
-     - cryptography
-     executable: pip3.9   
-
-  - name: mysql user check 
+      name:
+      - pymysql
+      - cryptography
+      executable: pip3.9
+  - name: checking if password is already set or not
     community.mysql.mysql_info:
       login_user: root
-      login_password: "{{ LP }}"
-      login_host: "{{ login_host }}"
+      login_password: "{{ login_password }}"
+      login_host: "{{ login_host }}" 
       filter: version
     ignore_errors: yes
     register: reg
-
-  - name: set root password properly
-    ansible.builtin.command:  mysql_secure_installation --set-root-pass ExpenseApp@1
-    when: reg.failed is true
+  - name: print op
+    ansible.builtin.debug:
+      msg: "{{ reg }}"
+ 
