@@ -53,7 +53,7 @@
   - name: installing python dependencies for mysql
     ansible.builtin.pip:
       name:
-      - Pysql
+      - Pymysql
       - Cryptography
     executable: pip3.9      
   - name: loading the data into my-sql
