@@ -3,7 +3,7 @@
   hosts: backend
   become: yes
   vars: 
-  - login_user: root
+    login_user: root
     login_password: ExpenseApp@1
     login_host: db.silipswebsite.online 
   tasks:
@@ -53,8 +53,8 @@
   - name: installing python dependencies for mysql
     ansible.builtin.pip:
       name:
-      - Pymysql
-      - Cryptography
+      - pymysql
+      - cryptography
     executable: pip3.9      
   - name: loading the data into my-sql
     community.mysql.mysql_db:
