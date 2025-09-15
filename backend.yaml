@@ -2,6 +2,10 @@
 - name: Configure backend server
   hosts: backend
   become: yes
+  vars: 
+  - login_user: root
+    login_password: ExpenseApp@1
+    login_host: db.silipswebsite.online 
   tasks:
   - name: disabling default nodejs
     ansible.builtin.command: dnf module disable nodejs -y
