@@ -52,10 +52,10 @@
       enabled: yes
   - name: installing python dependencies for mysql
     ansible.builtin.pip:
-    name:
-     - pymysql
-     - cryptography
-    executable: pip3.9      
+      name:
+      - pymysql
+      - cryptography
+      executable: pip3.9      
   - name: loading the data into my-sql
     community.mysql.mysql_db:
       login_user: "{{ login_user }}"
