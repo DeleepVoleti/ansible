@@ -41,6 +41,12 @@
       name: backend 
       state: started
       enabled: yes
+  - name: download mysql dependencies for ansible
+    ansible.builtin.pip:
+      name:
+      - pymysql
+      - cryptography
+      executable: pip3.9  
   - name: install mysql 
     ansible.builtin.dnf:
       name: mysql
