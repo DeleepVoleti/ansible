@@ -1,0 +1,2 @@
+app_path: /usr/share/nginx/html
+source_code: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip

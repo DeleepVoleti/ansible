@@ -1,0 +1,4 @@
+app_path: /app
+source_code: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+login_password: ExpenseApp@1
+login_host: db.dilipswebsite.online
