@@ -1,0 +1,5 @@
+- name: setting up db configuration
+  hosts: backend
+  become: yes
+  roles:
+  - backend
