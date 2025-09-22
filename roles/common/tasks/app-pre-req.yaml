@@ -1,15 +1,15 @@
 - name: delete default code
   ansible.builtin.file:
-    path: {{ app_path }}
+    path: "{{ app_path }}"
     state: absent
 
 - name: create req directory 
   ansible.builtin.file:
-    path: {{ app_path }}
+    path: "{{ app_path }}"
     state: directory
 
 - name: download and extract the code 
   ansible.builtin.unarchive:
-    src: {{ source_code }}
-    dest: {{ app_path }}
+    src: "{{ source_code }}"
+    dest: "{{ app_path }}"
     remote_src: yes   
